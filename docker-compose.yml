@@ -1,0 +1,20 @@
+services:
+  api:
+    build: .
+    ports: ["8000:8000"]
+    environment:
+      MONGODB_URI: mongodb://mongo:27017
+      MONGODB_DATABASE: agentprobe
+      QDRANT_URL: http://qdrant:6333
+    depends_on: [mongo, qdrant]
+  mongo:
+    image: mongo:7
+    ports: ["27017:27017"]
+    volumes: [agentprobe_mongo:/data/db]
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports: ["6333:6333", "6334:6334"]
+    volumes: [agentprobe_qdrant:/qdrant/storage]
+volumes:
+  agentprobe_mongo:
+  agentprobe_qdrant:

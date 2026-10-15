@@ -1,0 +1,8 @@
+{
+  "agent_name": "support-triage",
+  "input": {"message": "I was charged twice"},
+  "output": {"category": "billing", "priority": "high"},
+  "expected": {"category": "billing"},
+  "latency_ms": 240,
+  "tags": ["demo", "billing"]
+}
